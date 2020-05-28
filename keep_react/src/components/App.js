@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Input from './Input';
 import Notes from './Notes';
@@ -6,6 +6,15 @@ import Footer from './Footer';
 
 function App() {
     const [noteList, setNotes] = useState([]);
+
+    async function fetchNotes() {
+        const res = await fetch('/notes');
+        res.json().then(res => console.log(res));
+    }
+
+    useEffect(() => {
+        fetchNotes();
+    }, []);
 
     function addNote(note) {
         setNotes(prevNotes => {
