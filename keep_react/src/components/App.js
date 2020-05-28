@@ -7,9 +7,10 @@ import Footer from './Footer';
 function App() {
     const [noteList, setNotes] = useState([]);
 
+    // get API request
     async function fetchNotes() {
         const res = await fetch('/notes');
-        res.json().then(res => console.log(res));
+        res.json().then(res => setNotes(res));
     }
 
     useEffect(() => {
@@ -17,12 +18,28 @@ function App() {
     }, []);
 
     function addNote(note) {
+        // post API request 
+        const opt = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(note)
+        };
+        fetch('/notes', opt);
         setNotes(prevNotes => {
             return [...prevNotes, note];
         });
     }
 
     function deleteNote(id) {
+        // delete API request 
+        const opt = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: id.toString() })
+        };
+        console.log(opt.body);
+        
+        fetch('/notes', opt);
         setNotes(prevNotes => {
             return prevNotes.filter((item, index) => index !== id);
         })
