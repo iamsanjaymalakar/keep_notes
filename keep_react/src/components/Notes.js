@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { Fab } from "@material-ui/core";
+import PaletteIcon from '@material-ui/icons/Palette';
 
 function Notes(props) {
 
@@ -20,6 +21,10 @@ function Notes(props) {
             <Fab disabled={delIcon}
                 onClick={onDelete}>
                 <DeleteIcon />
+            </Fab>
+            <Fab disabled={delIcon}
+                onClick={onDelete}>
+                <PaletteIcon />
             </Fab>
         </div >
     );
