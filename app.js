@@ -22,7 +22,7 @@ app.route('/notes').get(function (req, res) {
     res.send('Added successfully.');
 }).delete(function (req, res) {
     notes = notes.filter(function (item, index) {
-        return index != parseInt(req.query.id);
+        return index != parseInt(req.body.id);
     });
     res.send('Deleted successfully.');
 });
