@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { Fab } from "@material-ui/core";
 
 function Notes(props) {
+
+    let [delIcon, setDelIcon] = useState(true);
 
     function onDelete(event) {
         props.deleteNote(props.id);
@@ -8,14 +12,16 @@ function Notes(props) {
     }
 
     return (
-        <div className='note'>
+        <div className='note'
+            onMouseEnter={() => setDelIcon(false)}
+            onMouseLeave={() => setDelIcon(true)}>
             <h1>{props.title}</h1>
             <p>{props.note}</p>
-            <button
+            <Fab disabled={delIcon}
                 onClick={onDelete}>
-                Delete
-          </button>
-        </div>
+                <DeleteIcon />
+            </Fab>
+        </div >
     );
 }
 

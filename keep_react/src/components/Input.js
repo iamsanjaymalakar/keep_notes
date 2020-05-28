@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Zoom from "@material-ui/core/Zoom";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 
 function Input(props) {
     let [expand, setExpand] = useState(false);
@@ -45,10 +47,10 @@ function Input(props) {
                         setExpand(true);
                     }} />
                 <Zoom in={expand}>
-                    <button
+                    <Fab
                         onClick={addNote}>
-                        Add
-                    </button>
+                        <AddIcon/>
+                    </Fab>
                 </Zoom>
             </form>
         </div>
