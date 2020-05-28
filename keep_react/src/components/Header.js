@@ -4,7 +4,7 @@ function Header(){
     return (
         <header>
             <h1>
-                Keeper
+                Keep Notes
             </h1>
         </header>
     );
